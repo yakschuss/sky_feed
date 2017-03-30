@@ -20,7 +20,9 @@ defmodule SkyFeed.Web.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", SkyFeed.Web do
-  #   pipe_through :api
-  # end
+  scope "/api", SkyFeed.Web do
+    pipe_through :api
+
+    post "/commit-feed", CommitController, :create
+  end
 end
