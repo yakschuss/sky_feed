@@ -1,5 +1,4 @@
-defmodule SkyFeed.Parser.Parse do
-
+defmodule SkyFeed.Feed.Parse do
   def parse(payload) do
     Poison.Parser.parse!(payload)
     |> Map.get("commits")
@@ -22,7 +21,7 @@ defmodule SkyFeed.Parser.Parse do
     nil
   end
 
-  defp parse_message(message) do
+  defp parse_message(_message) do
     "Content Hidden"
   end
 
