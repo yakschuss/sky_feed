@@ -11,6 +11,9 @@ defmodule SkyFeed.Feed.Parse do
     |> Enum.filter(fn(commit) ->
      !is_nil(commit[:message])
     end)
+    |> Enum.map(fn(commit) ->
+      SkyFeed.Feed.create_commit(commit)
+    end)
   end
 
   defp parse_message("p:"<> message) do
