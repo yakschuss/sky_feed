@@ -8,15 +8,6 @@ defmodule SkyFeed.Feed do
 
   alias SkyFeed.Feed.Commit
 
-  @doc """
-  Returns the list of commits.
-
-  ## Examples
-
-      iex> list_commits()
-      [%Commit{}, ...]
-
-  """
   def list_commits do
     Repo.all(Commit)
   end

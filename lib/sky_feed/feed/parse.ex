@@ -12,6 +12,7 @@ defmodule SkyFeed.Feed.Parse do
      !is_nil(commit[:message])
     end)
     |> Enum.map(fn(commit) ->
+      IO.inspect(commit)
       SkyFeed.Feed.create_commit(commit)
     end)
   end
