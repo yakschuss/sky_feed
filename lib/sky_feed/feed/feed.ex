@@ -36,7 +36,7 @@ defmodule SkyFeed.Feed do
 
   defp commit_changeset(%Commit{} = commit, attrs) do
     commit
-    |> cast(attrs, [])
+    |> cast(attrs, [:message, :author])
     |> validate_required([])
   end
 end
