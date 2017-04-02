@@ -16,6 +16,8 @@ defmodule SkyFeed.Web.Router do
   scope "/", SkyFeed.Web do
     pipe_through :browser # Use the default browser stack
 
+    get "/commits", FeedController, :index
+
     get "/", PageController, :index
   end
 

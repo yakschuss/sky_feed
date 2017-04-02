@@ -1,0 +1,9 @@
+<%= SkyFeed.Feed.Publish.feed(
+  SkyFeed.Feed.Publish.channel(
+    "Commits",
+    "link",
+    "All the commits!",
+    "English"
+  ),
+  SkyFeed.Feed.xml_commits()
+) %>

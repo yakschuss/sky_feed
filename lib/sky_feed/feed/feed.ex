@@ -7,6 +7,23 @@ defmodule SkyFeed.Feed do
   alias SkyFeed.Repo
 
   alias SkyFeed.Feed.Commit
+  alias SkyFeed.Feed.Publish
+
+  def xml_commits do
+    list_commits
+    |> Enum.map(fn(commit) -> 
+     Publish.item(
+       commit_description(commit),
+       commit_description(commit),
+       "link",
+       commit.id
+     )
+    end)
+  end
+
+  def commit_description(commit) do
+    commit.author <> " " <> commit.message
+  end
 
   def list_commits do
     Repo.all(Commit)
