@@ -16,10 +16,14 @@ defmodule SkyFeed.Web.Router do
   scope "/", SkyFeed.Web do
     pipe_through :browser # Use the default browser stack
 
-    get "/commits", FeedController, :index
 
     get "/", PageController, :index
   end
+
+  scope "/rss", SkyFeed.Web do
+    get "/commits", FeedController, :index
+  end
+
 
   # Other scopes may use custom stacks.
   scope "/api", SkyFeed.Web do

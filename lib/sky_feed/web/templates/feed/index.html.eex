@@ -1,9 +1,26 @@
-<%= SkyFeed.Feed.Publish.feed(
-  SkyFeed.Feed.Publish.channel(
-    "Commits",
-    "link",
-    "All the commits!",
-    "English"
-  ),
-  SkyFeed.Feed.xml_commits()
-) %>
+<?xml version="1.0" encoding="UTF-8"?>  
+<rss version="2.0">  
+  <channel>
+    <title>SkyFeed</title>
+    <description>LiquidSky Engineers, hard at work!</description>
+    <link><%= commit_url(@conn, :index) %></link>
+    <%= for commit <- @items do %>
+      <item>
+        <title>
+          <![CDATA[<%= commit.author %>]]>
+        </title>
+
+        <link><%= commit_url(@conn, :show, commit.id) %></link>
+
+        <description>
+          <![CDATA[<%= commit.message %>]]>
+        </description>
+
+        <pubDate><%= date_format(commit)  %></pubDate>
+
+        <guid isPermaLink="true"><%= commit_url(@conn, :show, commit.id) %></guid>
+
+      </item>
+    <% end %>
+  </channel>
+</rss>
