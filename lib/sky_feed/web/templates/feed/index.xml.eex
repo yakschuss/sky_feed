@@ -16,7 +16,7 @@
           <![CDATA[<%= commit.message %>]]>
         </description>
 
-        <pubDate><%# date_format(commit)  %></pubDate>
+        <pubDate><%= commit.timestamp  %></pubDate>
 
         <guid isPermaLink="true"><%# commit_url(@conn, :show, commit.id) %></guid>
 
