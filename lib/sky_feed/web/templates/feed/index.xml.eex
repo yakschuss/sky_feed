@@ -3,22 +3,22 @@
   <channel>
     <title>SkyFeed</title>
     <description>LiquidSky Engineers, hard at work!</description>
-    <link><%= commit_url(@conn, :index) %></link>
-    <%= for commit <- @items do %>
+    <link><%# commit_url(@conn, :index) %></link>
+    <%= for commit <- @commits do %>
       <item>
         <title>
           <![CDATA[<%= commit.author %>]]>
         </title>
 
-        <link><%= commit_url(@conn, :show, commit.id) %></link>
+        <link><%# commit_url(@conn, :show, commit.id) %></link>
 
         <description>
           <![CDATA[<%= commit.message %>]]>
         </description>
 
-        <pubDate><%= date_format(commit)  %></pubDate>
+        <pubDate><%# date_format(commit)  %></pubDate>
 
-        <guid isPermaLink="true"><%= commit_url(@conn, :show, commit.id) %></guid>
+        <guid isPermaLink="true"><%# commit_url(@conn, :show, commit.id) %></guid>
 
       </item>
     <% end %>

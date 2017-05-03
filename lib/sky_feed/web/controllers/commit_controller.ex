@@ -7,4 +7,7 @@ defmodule SkyFeed.Web.CommitController do
     send_resp(conn, :ok, "")
   end
 
+  def show(conn, :show, id) do
+
+  end
 end

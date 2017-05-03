@@ -4,10 +4,10 @@ defmodule SkyFeed.Web.FeedController do
   alias SkyFeed.Feed.Commit
 
   def index(conn, _params) do
-    commits = Repo.all from c in Commit, order_by: [desc: c.id]
+    commits = SkyFeed.Feed.list_commits
     conn
     |> put_layout(:none)
     |> put_resp_content_type("application/xml")
-    |> render "index.xml", items: commits
+    |> render("index.xml", commits: commits)
   end
 end
