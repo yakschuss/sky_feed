@@ -8,7 +8,7 @@ defmodule SkyFeed.Feed.Parse do
      %{
        author: parse_author(commit["author"]["name"]),
        message: parse_message(commit["message"]),
-       timestamp: parse_time_stamp(commit["timestamp"])
+       timestamp: parse_time_stamp(DateTime.from_iso8601(commit["timestamp"]))
      }
     end)
     |> Enum.filter(fn(commit) ->
