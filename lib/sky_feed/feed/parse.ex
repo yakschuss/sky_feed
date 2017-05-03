@@ -1,11 +1,14 @@
 defmodule SkyFeed.Feed.Parse do
+  require IEx
+
   def parse(payload) do
     Poison.Parser.parse!(payload)
     |> Map.get("commits")
     |> Enum.map(fn(commit) ->
      %{
        author: parse_author(commit["author"]["name"]),
-       message: parse_message(commit["message"])
+       message: parse_message(commit["message"]),
+       timestamp: parse_time_stamp(commit["timestamp"])
      }
     end)
     |> Enum.filter(fn(commit) ->
@@ -32,5 +35,9 @@ defmodule SkyFeed.Feed.Parse do
   defp parse_author(name) do
    [first_name | last_name] =  String.split(name)
    first_name
+  end
+
+  defp parse_time_stamp({:ok, date, _offset}) do
+    "#{date.month}/#{date.day}/#{date.year}"
   end
 end

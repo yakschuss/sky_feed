@@ -36,6 +36,6 @@ defmodule SkyFeed.Feed do
 
   defp commit_changeset(%Commit{} = commit, attrs) do
     commit
-    |> cast(attrs, [:message, :author])
+    |> cast(attrs, [:message, :author, :timestamp])
   end
 end
