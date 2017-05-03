@@ -4,6 +4,7 @@ defmodule SkyFeed.Feed.Commit do
   schema "feed_commits" do
     field :message, :string
     field :author, :string
+    field :timestamp, :string
 
     timestamps()
   end
